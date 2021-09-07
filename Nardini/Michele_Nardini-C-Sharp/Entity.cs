@@ -37,7 +37,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Gets the x
         /// </summary>
-        public float getX()
+        public float GetX()
         {
             return this.x;
         }
@@ -46,7 +46,7 @@ namespace Michele_Nardini_C_Sharp
         /// Sets the x
         /// <param name="x"> The coordinate x</param> 
         /// </summary>
-        public void setX(float x)
+        public void SetX(float x)
         {
             this.x = x; 
         }
@@ -54,7 +54,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Gets the y
         /// </summary>
-        public float getY()
+        public float GetY()
         {
             return this.y;
         }
@@ -62,7 +62,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// <param name="y"> The coordinate y</param>
         /// </summary>
-        public void setY(float y)
+        public void SetY(float y)
         {
             this.y = y;
         }
@@ -70,7 +70,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Gets width
         /// </summary>
-        public int getWidth()
+        public int GetWidth()
         {
             return this.width;
         }
@@ -79,7 +79,7 @@ namespace Michele_Nardini_C_Sharp
         /// Sets the width
         /// <param name="width"> The width</param>
         /// </summary>
-        public void setWidth(int width)
+        public void SetWidth(int width)
         {
             this.width = width;
         }
@@ -87,7 +87,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Gets the height
         /// </summary>
-        public int getHeight()
+        public int GetHeight()
         {
             return this.height;
         }
@@ -96,7 +96,7 @@ namespace Michele_Nardini_C_Sharp
         /// Sets the height
         /// <param name="height"> The height</param>
         /// </summary>
-        public void setHeight(int height)
+        public void SetHeight(int height)
         {
             this.height = height;
         }
@@ -104,13 +104,13 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Tick
         /// </summary>
-        public abstract void tick();
+        public abstract void Tick();
 
         /// <summary>
         /// Render the image
         ///<param name="g">Graphics to render</param>
         /// </summary>
-        public abstract void render(Graphics g);
+        public abstract void Render(Graphics g);
 
     }
 }

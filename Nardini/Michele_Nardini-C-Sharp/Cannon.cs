@@ -32,7 +32,7 @@ namespace Michele_Nardini_C_Sharp
 
         public CollectBall collectBall;
 
-        public static Ball[,] mapColor = CollectBall.getMapCollect();
+        public static Ball[,] mapColor = CollectBall.GetMapCollect();
 
         private int angle = 0;
 
@@ -51,22 +51,22 @@ namespace Michele_Nardini_C_Sharp
         public Cannon(float x, float y, int width, int height, CollectBall collectBall) : base(x,y,width,height)
         {
             this.collectBall = collectBall;
-            this.setSpeed(50);
+            this.SetSpeed(50);
             this.ballPos = true;
             this.bounce = true;
-            this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, getColor(), Map.index++);
+            this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, GetColor(), Map.index++);
             while (this.ball.color == 0)
             {
-                this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, getColor(), Map.index++);
+                this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, GetColor(), Map.index++);
             }
-            collectBall.addBall(this.ball);
+            collectBall.AddBall(this.ball);
         }
 
         /// <summary>
         /// Manage collectBall
         ///<returns> the current array of the balls</returns>
         /// </summary>
-        public CollectBall getCollectBall()
+        public CollectBall GetCollectBall()
         {
             return collectBall;
         }
@@ -75,7 +75,7 @@ namespace Michele_Nardini_C_Sharp
         /// manage creation new ball
         ///<returns> the color of the new ball</returns>
         /// </summary>
-        private int getColor()
+        private int GetColor()
         {
             return CollectBall.randomColorCannon;
         }
@@ -83,16 +83,16 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// create the new ball
         /// </summary>
-        private void newBall()
+        private void NewBall()
         {
             if (!this.ball.isMove && !this.ballPos)
             {
-                this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, getColor(), Map.index++);
+                this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, GetColor(), Map.index++);
                 while (this.ball.color == 0)
                 {
-                    this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, getColor(), Map.index++);
+                    this.ball = new Ball(this.x + width / 2 - SCARTO_X_BOLLA, this.y + SCARTO_Y_BOLLA - 250, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, GetColor(), Map.index++);
                 }
-                collectBall.addBall(this.ball);
+                collectBall.AddBall(this.ball);
                 this.ballPos = true;
             }
         }
@@ -100,9 +100,9 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// shot the ball
         /// </summary>
-        private void shot()
+        private void Shot()
         {
-            if (this.ballPos && KeyManager.space && !StateGame.pause && !CollectBall.gameOver && !CollectBall.victoryGame)
+            if (this.ballPos && /*KeyManager.space && !StateGame.pause &&*/ !CollectBall.gameOver && !CollectBall.victoryGame)
             {
                 bool iter = true;
                 int i = 0;
@@ -119,7 +119,7 @@ namespace Michele_Nardini_C_Sharp
                 }
 
                 this.ball.directMove = (float)((this.angle - 90)*(Math.PI/180));
-                this.ball.direct();
+                this.ball.Direct();
                 this.ball.isMove = true;
                 this.ballPos = false;
                 firstShot = 1; //first shot now i can activate save
@@ -129,7 +129,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// check if the cannon need to change direction of the movement
         /// </summary>
-        public void checkBounce()
+        public void CheckBounce()
         {
             if (this.x > Ball.RIGHT_BOUNCE + 5)
             {
@@ -144,49 +144,49 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// set the ball coordinate
         /// </summary>
-        private void ballSetX()
+        private void BallSetX()
         {
             if (!this.ball.isMove)
             {
-                this.ball.setX(this.x + (float)92);
+                this.ball.SetX(this.x + (float)92);
             }
         }
 
         /// <summary>
         /// set the speed of the cannon 
         /// </summary>
-        private void speedCannon(float x)
+        private void SpeedCannon(float x)
         {
             if (this.bounce)
             {
-                this.setX(this.x + (float)x);
-                ballSetX();
+                this.SetX(this.x + (float)x);
+                BallSetX();
             }
             else
             {
-                this.setX(this.x - (float)x);
-                ballSetX();
+                this.SetX(this.x - (float)x);
+                BallSetX();
             }
         }
 
         /// <summary>
         /// Set the difficult of the game
         /// </summary>
-        private void difficults()
+        private void Difficults()
         {
-            if (!StateGame.pause && !CollectBall.gameOver && !CollectBall.victoryGame)
+            if (/*!StateGame.pause && */!CollectBall.gameOver && !CollectBall.victoryGame)
             {
 
                 switch (difficult)
                 {
                     case 1:
-                        speedCannon(EASY);
+                        SpeedCannon(EASY);
                         break;
                     case 2:
-                        speedCannon(NORMAL);
+                        SpeedCannon(NORMAL);
                         break;
                     case 3:
-                        speedCannon(HARD);
+                        SpeedCannon(HARD);
                         break;
                     default:
                         break;
@@ -197,28 +197,28 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Move the cannon
         /// </summary>
-        public void cannonMove()
+        public void CannonMove()
         {
-            checkBounce();
-            difficults();
+            CheckBounce();
+            Difficults();
         }
 
         /// <summary>
         /// update cannon action
         /// </summary>
-        public override void tick()
+        public override void Tick()
         {
-            cannonMove();
-            shot();
-            newBall();
+            CannonMove();
+            Shot();
+            NewBall();
         }
 
         /// <summary>
         /// render cannon
         /// </summary>
-        public override void render(Graphics g)
+        public override void Render(Graphics g)
         {
-            g.DrawImage(Assets.cannon, (int)this.getX() - 50, (int)this.getY() - 280, this.getWidth(), this.getHeight(), null);
+            //g.DrawImage(Assets.cannon, (int)this.getX() - 50, (int)this.getY() - 280, this.getWidth(), this.getHeight(), null);
         }
     }
 }

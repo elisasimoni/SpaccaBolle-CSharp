@@ -66,15 +66,15 @@ namespace Michele_Nardini_C_Sharp
             Map.collectBallMap = collectBall;
             StreamReader reader = null;
            
-            reader = loadLevel(reader, level);
-            loadMap(reader, gameYSize);
+            reader = LoadLevel(reader, level);
+            LoadMap(reader, gameYSize);
         }
 
         /// <summary>
 		/// manage collectBallMap
 		///<returns> the collectBallMap</returns>
 		/// </summary>
-        public static CollectBall getCollectBallMap()
+        public static CollectBall GetCollectBallMap()
         {
             return collectBallMap;
         }
@@ -83,7 +83,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage collectBallMap
 		/// /// <param name="collectBallMap">The collection of all ball of the map</param>
 		/// </summary>
-        public static void setCollectBallMap(CollectBall collectBallMap)
+        public static void SetCollectBallMap(CollectBall collectBallMap)
         {
             Map.collectBallMap = collectBallMap;
         }
@@ -92,7 +92,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage mapMatrix
 		///<returns> the matrix of the map</returns>
 		/// </summary>
-        public static Ball[,] getMapmatrix()
+        public static Ball[,] GetMapmatrix()
         {
             return mapMatrix;
         }
@@ -108,7 +108,7 @@ namespace Michele_Nardini_C_Sharp
         /// <param name="map"> The map matrix</param>
         /// <param name="index"> The index of the ball</param>
 		///
-        private void loadCoordinate(int xMap, int yMap, int row, int col, int color, Ball[,] map, int index)
+        private void LoadCoordinate(int xMap, int yMap, int row, int col, int color, Ball[,] map, int index)
         {
             map[row,col] = new Ball(xMap, yMap, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, color, index); /*caricamento matrice*/
         }
@@ -118,7 +118,7 @@ namespace Michele_Nardini_C_Sharp
         /// <param name="reader"> The reader</param>
 		/// <param name="level"> The level of the map</param>
         /// </summary>
-        private StreamReader loadLevel(StreamReader reader, String level)
+        private StreamReader LoadLevel(StreamReader reader, String level)
         {
             if (level != null)
             {
@@ -147,7 +147,7 @@ namespace Michele_Nardini_C_Sharp
         /// <param name="reader"> The reader</param>
 		/// <param name="gameYSize"> The height of the map</param>
         /// </summary>
-        private void loadMap(StreamReader reader, int gameYSize)
+        private void LoadMap(StreamReader reader, int gameYSize)
         {
             int posLine = 0;
             CollectBall.flyngPoint = 0;
@@ -278,10 +278,10 @@ namespace Michele_Nardini_C_Sharp
                     }
 
                     ballMap = new Ball(lineDimensionX, lineDimensionY, Ball.BOBBLE_SIZE, Ball.BOBBLE_SIZE, readBobble, index);
-                    loadCoordinate(lineDimensionX, lineDimensionY, posLine, posChar, readBobble, mapMatrix, index++);
+                    LoadCoordinate(lineDimensionX, lineDimensionY, posLine, posChar, readBobble, mapMatrix, index++);
 
                     posX[posChar] = lineDimensionX;
-                    collectBallMap.addBall(ballMap);
+                    collectBallMap.AddBall(ballMap);
 
                 }
 

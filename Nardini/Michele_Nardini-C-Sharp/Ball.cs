@@ -53,17 +53,17 @@ namespace Michele_Nardini_C_Sharp
 		/// <summary>
 		/// manage direct ball
 		/// </summary>
-		public void direct()
+		public void Direct()
 		{
-			this.setxMove(Math.Cos((Math.PI/180)*(directMove)) * this.speed);
-			this.setyMove(Math.Sin((Math.PI/180)*(directMove)) * this.speed);
+			this.SetxMove(Math.Cos((Math.PI/180)*(directMove)) * this.speed);
+			this.SetyMove(Math.Sin((Math.PI/180)*(directMove)) * this.speed);
 		}
 
 
 		/// <summary>
 		/// manage move ball
 		/// </summary>
-		private void destroy()
+		private void Destroy()
 		{
 			if (this.y < 0)
 			{
@@ -74,26 +74,26 @@ namespace Michele_Nardini_C_Sharp
 		/// <summary>
 		/// manage elimination ball
 		/// </summary>
-		public void eliminate()
+		public void Eliminate()
 		{
-			this.setHeight(0);
-			this.setWidth(0);
+			this.SetHeight(0);
+			this.SetWidth(0);
 		}
 
 		/// <summary>
 		/// manage status ball
 		/// </summary>
-		public void ballStatus()
+		public void BallStatus()
 		{
 			Ball b = new Ball(this.x, this.y, this.height, this.width, this.color, Map.index);
 			this.index = Map.index;
-			Map.collectBallMap.addBall(b);
+			Map.collectBallMap.AddBall(b);
 		}
 
 		/// <summary>
 		/// manage tick
 		/// </summary>
-		public override void tick()
+		public override void Tick()
 		{
 			if (isMove)
 			{
@@ -106,22 +106,22 @@ namespace Michele_Nardini_C_Sharp
 					if (Map.collectBallMap.roof(this.x, this.y, this))
 					{
 						this.isMove = false;
-						ballStatus();
-						if (Map.collectBallMap.tris())
+						BallStatus();
+						if (Map.collectBallMap.Tris())
 						{
-							eliminate();
+							Eliminate();
 						}
 					}
 					else
 					{
-						if (Map.collectBallMap.check(this.x, this.y, this))
+						if (Map.collectBallMap.Check(this.x, this.y, this))
 						{
 							this.isMove = false;
-							ballStatus();
-							eliminate();
-							if (Map.collectBallMap.tris())
+							BallStatus();
+							Eliminate();
+							if (Map.collectBallMap.Tris())
 							{
-								eliminate();
+								Eliminate();
 							}
 						}
 					}
@@ -131,14 +131,14 @@ namespace Michele_Nardini_C_Sharp
 					Console.WriteLine(e.ToString());
 					Console.Write(e.StackTrace);
 				}
-				move();
+				Move();
 			}
 		}
 
 		/// <summary>
 		/// manage render ball
 		/// </summary>
-		public override void render(Graphics g)
+		public override void Render(Graphics g)
 		{
 			g.DrawImage(Assets.ballGroup[color], (int)x, (int)y, width, height, null);
 		}
@@ -147,7 +147,7 @@ namespace Michele_Nardini_C_Sharp
 		/// get ball
 		///<returns> the ball</returns>
 		/// </summary>
-		public Ball getBall => this;
+		public Ball GetBall => this;
 
 	}
 }

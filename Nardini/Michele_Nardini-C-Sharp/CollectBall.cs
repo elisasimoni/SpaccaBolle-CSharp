@@ -34,7 +34,7 @@ namespace Michele_Nardini_C_Sharp
 		private List<Ball> collectionBall;
 
 		/** The map collect. */
-		public static Ball[,] mapCollect = Map.getMapmatrix();
+		public static Ball[,] mapCollect = Map.GetMapmatrix();
 
 		/** The game over. */
 		public static bool gameOver = false;
@@ -78,7 +78,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage MapCollect
 		///<returns> the matrix of ball in the map</returns>
 		/// </summary>
-		public static Ball[,] getMapCollect()
+		public static Ball[,] GetMapCollect()
 		{
 			return mapCollect;
 		}
@@ -86,11 +86,11 @@ namespace Michele_Nardini_C_Sharp
 		/// <summary>
 		/// tick
 		/// </summary>
-		public void tick()
+		public void Tick()
 		{
 			foreach (Ball b in collectionBall)
 			{
-				b.tick();
+				b.Tick();
 			}
 		}
 
@@ -98,7 +98,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage MapCollect
 		///<returns> the color random</returns>
 		/// </summary>
-		public static int getColorInMap()
+		public static int GetColorInMap()
 		{
 			int blue = 0, yellow = 0, green = 0, red = 0;
 			int random = 0;
@@ -148,7 +148,7 @@ namespace Michele_Nardini_C_Sharp
 		/// find num of ball
 		///<returns> the number of ball</returns>
 		/// </summary>
-		public int numBolle()
+		public int NumBolle()
 		{
 			return collectionBall.Count;
 		}
@@ -157,7 +157,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage cord
 		///<returns> the cordX of ball</returns>
 		/// </summary>
-		public float cordX(Ball b)
+		public float CordX(Ball b)
 		{
 			return b.x;
 		}
@@ -166,7 +166,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage cord
 		///<returns> the cordY of ball</returns>
 		/// </summary>
-		public float cordY(Ball b)
+		public float CordY(Ball b)
 		{
 			return b.y;
 		}
@@ -175,7 +175,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage color
 		///<returns> the color of ball</returns>
 		/// </summary>
-		public int color(Ball b)
+		public int Color(Ball b)
 		{
 			return b.color;
 		}
@@ -184,12 +184,12 @@ namespace Michele_Nardini_C_Sharp
 		/// manage gameOver
 		/// <param name="coordinateY"> The coordY of ball</param>
 		/// </summary>
-		private void gameOverCheck(float coordinateY)
+		private void GameOverCheck(float coordinateY)
 		{
 			if (coordinateY > 350)
 			{
 				System.Console.WriteLine("Hai perso");
-				saveGame(mapCollect);
+				SaveGame(mapCollect);
 				gameOver = true;
 			}
 		}
@@ -207,10 +207,10 @@ namespace Michele_Nardini_C_Sharp
 
 			foreach (Ball bobble in collectionBall)
 			{
-				if (coordinateX >= bobble.getX() && coordinateX <= bobble.getX() + bobble.getWidth())
+				if (coordinateX >= bobble.GetX() && coordinateX <= bobble.GetX() + bobble.GetWidth())
 				{
 
-					if (coordinateY < ROOF_LIMIT && bobble.getY() < ROOF_LIMIT && bobble.color == 0)
+					if (coordinateY < ROOF_LIMIT && bobble.GetY() < ROOF_LIMIT && bobble.color == 0)
 					{
 
 
@@ -228,7 +228,7 @@ namespace Michele_Nardini_C_Sharp
 							}
 						}
 
-						randomColorCannon = getColorInMap();
+						randomColorCannon = GetColorInMap();
 
 
 
@@ -247,7 +247,7 @@ namespace Michele_Nardini_C_Sharp
 		/// <param name="coordinateX"> The coordX of ball</param>
 		/// <param name="b"> The ball</param>
 		/// </summary>
-		public bool check(float coordinateX, float coordinateY, Ball b)
+		public bool Check(float coordinateX, float coordinateY, Ball b)
 		{
 
 			bool check = false;
@@ -255,13 +255,13 @@ namespace Michele_Nardini_C_Sharp
 
 			foreach (Ball bobble in collectionBall)
 			{
-				if ((coordinateY < (cordY(bobble) + Map.SCARTO_Y) && bobble.color != 0))
+				if ((coordinateY < (CordY(bobble) + Map.SCARTO_Y) && bobble.color != 0))
 				{
-					if (coordinateX >= cordX(bobble) && coordinateX < (cordX(bobble)) + bobble.getWidth() - 15)
+					if (coordinateX >= CordX(bobble) && coordinateX < (CordX(bobble)) + bobble.GetWidth() - 15)
 					{
 
-						float saveX = cordX(bobble);
-						b.x = cordX(bobble);
+						float saveX = CordX(bobble);
+						b.x = CordX(bobble);
 						bool isEqual = true;
 						int tempSaveCol = 0;
 
@@ -303,15 +303,15 @@ namespace Michele_Nardini_C_Sharp
 							if (b.y >= mapCollect[row,saveCol].y - 30 && b.y <= mapCollect[row,saveCol].y + 30)
 							{
 								mapCollect[row,saveCol] = b;
-								saveGame(mapCollect);
-								randomColorCannon = getColorInMap();
+								SaveGame(mapCollect);
+								randomColorCannon = GetColorInMap();
 							}
 						}
 
 						/*
 						* Controllo Game Over
 						*/
-						this.gameOverCheck(coordinateY);
+						this.GameOverCheck(coordinateY);
 						check = true;
 					}
 				}
@@ -320,7 +320,7 @@ namespace Michele_Nardini_C_Sharp
 
 		}
 
-		private void fiveCheck()
+		private void FiveCheck()
 		{
 
 			int count = 0;
@@ -359,11 +359,11 @@ namespace Michele_Nardini_C_Sharp
 							mapCollect[r,c3].color = 0;
 							mapCollect[r,c4].color = 0;
 							mapCollect[r,c5].color = 0;
-							mapCollect[r,c].eliminate();
-							mapCollect[r,c2].eliminate();
-							mapCollect[r,c3].eliminate();
-							mapCollect[r,c4].eliminate();
-							mapCollect[r,c5].eliminate();
+							mapCollect[r,c].Eliminate();
+							mapCollect[r,c2].Eliminate();
+							mapCollect[r,c3].Eliminate();
+							mapCollect[r,c4].Eliminate();
+							mapCollect[r,c5].Eliminate();
 							this.checkTris = true;
 
 							if (addPoint == 0)
@@ -374,7 +374,7 @@ namespace Michele_Nardini_C_Sharp
 						}
 					}
 
-					victory(mapCollect);
+					Victory(mapCollect);
 				}
 			}
 		}
@@ -382,7 +382,7 @@ namespace Michele_Nardini_C_Sharp
 		/**
 		 * Four and three check.
 		 */
-		private void fourAndThreeCheck()
+		private void FourAndThreeCheck()
 		{
 
 			int count = 0;
@@ -410,10 +410,10 @@ namespace Michele_Nardini_C_Sharp
 								mapCollect[r,c2].color = 0;
 								mapCollect[r,c3].color = 0;
 								mapCollect[r,c4].color = 0;
-								mapCollect[r,c].eliminate();
-								mapCollect[r,c2].eliminate();
-								mapCollect[r,c3].eliminate();
-								mapCollect[r,c4].eliminate();
+								mapCollect[r,c].Eliminate();
+								mapCollect[r,c2].Eliminate();
+								mapCollect[r,c3].Eliminate();
+								mapCollect[r,c4].Eliminate();
 
 								if (addPoint == 0)
 								{
@@ -428,9 +428,9 @@ namespace Michele_Nardini_C_Sharp
 								mapCollect[r,c].color = 0;
 								mapCollect[r,c2].color = 0;
 								mapCollect[r,c3].color = 0;
-								mapCollect[r,c].eliminate();
-								mapCollect[r,c2].eliminate();
-								mapCollect[r,c3].eliminate();
+								mapCollect[r,c].Eliminate();
+								mapCollect[r,c2].Eliminate();
+								mapCollect[r,c3].Eliminate();
 
 								if (addPoint == 0)
 								{
@@ -439,7 +439,7 @@ namespace Michele_Nardini_C_Sharp
 								}
 							}
 
-							victory(mapCollect);
+							Victory(mapCollect);
 
 						}
 					}
@@ -450,7 +450,7 @@ namespace Michele_Nardini_C_Sharp
 		/**
 		 * Three vertical check.
 		 */
-		private void threeVerticalCheck()
+		private void ThreeVerticalCheck()
 		{
 
 			int count = 0;
@@ -473,9 +473,9 @@ namespace Michele_Nardini_C_Sharp
 							mapCollect[r,c].color = 0;
 							mapCollect[r2,c].color = 0;
 							mapCollect[r3,c].color = 0;
-							mapCollect[r,c].eliminate();
-							mapCollect[r2,c].eliminate();
-							mapCollect[r3,c].eliminate();
+							mapCollect[r,c].Eliminate();
+							mapCollect[r2,c].Eliminate();
+							mapCollect[r3,c].Eliminate();
 
 							if (addPoint == 0)
 							{
@@ -483,7 +483,7 @@ namespace Michele_Nardini_C_Sharp
 								point = point + 3;
 							}
 
-							victory(mapCollect);
+							Victory(mapCollect);
 						}
 					}
 				}
@@ -493,7 +493,7 @@ namespace Michele_Nardini_C_Sharp
 		/**
 		 * Ball attached one check.
 		 */
-		private void ballAttachedOneCheck()
+		private void BallAttachedOneCheck()
 		{
 
 			int count = 0;
@@ -521,7 +521,7 @@ namespace Michele_Nardini_C_Sharp
 
 							checkTris = true;
 							mapCollect[r,c].color = 0;
-							mapCollect[r,c].eliminate();
+							mapCollect[r,c].Eliminate();
 
 							if (addPoint == 0)
 							{
@@ -529,7 +529,7 @@ namespace Michele_Nardini_C_Sharp
 								flyngPoint = 0;
 							}
 
-							victory(mapCollect);
+							Victory(mapCollect);
 						}
 					}
 				}
@@ -539,7 +539,7 @@ namespace Michele_Nardini_C_Sharp
 		/**
 		 * Ball attached plus check.
 		 */
-		private void ballAttachedPlusCheck()
+		private void BallAttachedPlusCheck()
 		{
 
 
@@ -572,7 +572,7 @@ namespace Michele_Nardini_C_Sharp
 						{
 
 							mapCollect[row,c].color = 0;
-							mapCollect[row,c].eliminate();
+							mapCollect[row,c].Eliminate();
 
 							if (addPoint == 0)
 							{
@@ -593,7 +593,7 @@ namespace Michele_Nardini_C_Sharp
 
 							checkTris = true;
 							mapCollect[r,c].color = 0;
-							mapCollect[r,c].eliminate();
+							mapCollect[r,c].Eliminate();
 
 							if (addPoint == 0)
 							{
@@ -605,7 +605,7 @@ namespace Michele_Nardini_C_Sharp
 								}
 							}
 
-							victory(mapCollect);
+							Victory(mapCollect);
 
 							stop = true;
 						}
@@ -617,7 +617,7 @@ namespace Michele_Nardini_C_Sharp
 		/**
 		 * Ball horizontal check.
 		 */
-		private void ballHorizontalCheck()
+		private void BallHorizontalCheck()
 		{
 
 			/*Controllo Orizzontale Particolare*/
@@ -650,9 +650,9 @@ namespace Michele_Nardini_C_Sharp
 							mapCollect[r,c].color = 0;
 							mapCollect[r,c2].color = 0;
 							mapCollect[r,c3].color = 0;
-							mapCollect[r,c].eliminate();
-							mapCollect[r,c2].eliminate();
-							mapCollect[r,c3].eliminate();
+							mapCollect[r,c].Eliminate();
+							mapCollect[r,c2].Eliminate();
+							mapCollect[r,c3].Eliminate();
 
 							checkTris = true;
 
@@ -662,7 +662,7 @@ namespace Michele_Nardini_C_Sharp
 								point = point + 3;
 							}
 
-							victory(mapCollect);
+							Victory(mapCollect);
 						}
 					}
 				}
@@ -674,24 +674,24 @@ namespace Michele_Nardini_C_Sharp
 		/// manage tris
 		/// <return>if there is a tris of ball of the same color</return>
 		/// </summary>
-		public bool tris()
+		public bool Tris()
 		{
 
 
 			addPoint = 0;
 
 
-			this.fiveCheck();
+			this.FiveCheck();
 
-			this.fourAndThreeCheck();
+			this.FourAndThreeCheck();
 
-			this.threeVerticalCheck();
+			this.ThreeVerticalCheck();
 
-			this.ballHorizontalCheck();
+			this.BallHorizontalCheck();
 
-			this.ballAttachedOneCheck();
+			this.BallAttachedOneCheck();
 
-			this.ballAttachedPlusCheck();
+			this.BallAttachedPlusCheck();
 
 
 			for (int r = 0; r < NUMROW; r++)
@@ -704,11 +704,11 @@ namespace Michele_Nardini_C_Sharp
 						foreach (Ball b in collectionBall)
 						{
 
-							if (mapCollect[r,c].getX() == b.getX() && mapCollect[r,c].getY() == b.getY())
+							if (mapCollect[r,c].GetX() == b.GetX() && mapCollect[r,c].GetY() == b.GetY())
 							{
 
 								b.color = 0;
-								b.eliminate();
+								b.Eliminate();
 							}
 						}
 					}
@@ -729,7 +729,7 @@ namespace Michele_Nardini_C_Sharp
 							if (mapCollect[r,c].index == b.index)
 							{
 								b.color = 0;
-								b.eliminate();
+								b.Eliminate();
 
 							}
 						}
@@ -746,7 +746,7 @@ namespace Michele_Nardini_C_Sharp
 		/// saveGame
 		/// <param name="matrix"> The actual matrix map</param>
 		/// </summary>
-		public void saveGame(Ball[,] matrix)
+		public void SaveGame(Ball[,] matrix)
 		{
 			string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "save.txt")))
@@ -767,7 +767,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage victory
 		/// <param name="map"> The actual matrix map</param>
 		/// </summary>
-		private void victory(Ball[,] map)
+		private void Victory(Ball[,] map)
 		{
 			int count = 0;
 			for (int r1 = 0; r1 < NUMROW; r1++)
@@ -790,7 +790,7 @@ namespace Michele_Nardini_C_Sharp
 		/// manage balls
 		///<return>all the ball</return>
 		/// </summary>
-		public List<Ball> getBolle()
+		public List<Ball> GetBolle()
 		{
 			return collectionBall;
 		}
@@ -799,12 +799,12 @@ namespace Michele_Nardini_C_Sharp
 		/// manage render
 		/// <param name="g"> The graphics to render</param>
 		/// </summary>
-		public void render(Graphics g)
+		public void Render(Graphics g)
 		{
 
 			foreach (Ball b in collectionBall)
 			{
-				b.render(g);
+				b.Render(g);
 			}
 
 
@@ -816,7 +816,7 @@ namespace Michele_Nardini_C_Sharp
 		/// <param name="b"> The ball to add</param>
 
 		/// </summary>
-		public void addBall(Ball b)
+		public void AddBall(Ball b)
 		{
 			collectionBall.Add(b);
 		}

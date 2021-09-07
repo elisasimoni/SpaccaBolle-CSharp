@@ -37,7 +37,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Move the entity
         /// </summary>
-        public void move()
+        public void Move()
         {
             x += (float)this.xMove;
             y += (float)this.yMove;
@@ -46,7 +46,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Gets speed
         /// </summary>
-        public float getSpeed()
+        public float GetSpeed()
         {
             return this.speed;
         }
@@ -55,7 +55,7 @@ namespace Michele_Nardini_C_Sharp
         /// Sets the speed
         /// <param name="speed"> The speed</param>
         /// </summary>
-        public void setSpeed(float speed)
+        public void SetSpeed(float speed)
         {
             this.speed = speed;
         }
@@ -63,7 +63,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Get the x Move
         /// </summary>
-        public double getxMove()
+        public double GetxMove()
         {
             return this.xMove;
         }
@@ -72,7 +72,7 @@ namespace Michele_Nardini_C_Sharp
         /// Sets the xMove
         /// <param name="xMove"> The xMove</param>
         /// </summary>
-        public void setxMove(double xMove)
+        public void SetxMove(double xMove)
         {
             this.xMove = xMove;
         }
@@ -80,7 +80,7 @@ namespace Michele_Nardini_C_Sharp
         /// <summary>
         /// Gets the yMove
         /// </summary>
-        public double getyMove()
+        public double GetyMove()
         {
             return this.yMove;
         }
@@ -89,7 +89,7 @@ namespace Michele_Nardini_C_Sharp
         /// Sets the yMove
         /// <param name="yMove"> The yMove</param>
         /// </summary>
-        public void setyMove(double yMove)
+        public void SetyMove(double yMove)
         {
             this.yMove = yMove;
         }
